@@ -1,0 +1,51 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">LISTADO DE DISTRITOS</div>
+    <div class="card-body text-primary">
+      
+
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/distrito/formdistrito']">Crear Distrito</button>
+      </div>
+
+      <div *ngIf="distritos?.length==0">
+        <div class="alert alert-info" role="alert">
+          No hay distritos registrados
+        </div>
+      </div>
+  
+      <table class="table table-bordered table-striped" *ngIf="distritos?.length>0">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Parroquia</th>
+            <th>Provincia</th>
+            <th>
+              Editar
+            </th>
+            <th>
+              Eliminar
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let distrito of distritos">
+            <td>{{ distrito.codigoDistrito }}</td>
+            <td>{{ distrito.nombreDistrito }}</td>
+            <td>{{ distrito.parroquia }}</td>
+            <td>{{ distrito.provincia }}</td>
+
+            <td>
+              <button type="button" name="editar" [routerLink]="['/distrito/formdistrito', distrito.idDistrito]" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='deleteDistrito(distrito)' class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <paginator-mantenimiento *ngIf="paginador" [paginador] = "paginador"></paginator-mantenimiento>
+    </div>
+  </div>
+  
+

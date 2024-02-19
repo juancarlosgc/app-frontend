@@ -1,0 +1,59 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">LISTADO DE PERSONAL POLICIAL</div>
+    <div class="card-body text-primary">
+      
+
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/persona/formpersona']">Crear Perona</button>
+      </div>
+
+      <div *ngIf="personas?.length==0">
+        <div class="alert alert-info" role="alert">
+          No hay personas registradas
+        </div>
+      </div>
+  
+      <table class="table table-bordered table-striped" *ngIf="personas?.length>0">
+        <thead>
+          <tr>
+           
+            <th>Cédula</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo de Sangre</th>
+            <th>Ciudad de Nacimiento</th>
+            <th>Teléfono</th>
+            <th>Rango</th>
+            <th>
+              Editar
+            </th>
+            <th>
+              Eliminar
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personas">
+           
+            <td>{{ persona.cedula }}</td>
+            <td>{{ persona.apellidos }}</td>
+            <td>{{ persona.nombres }}</td>
+            <td>{{ persona.fechaNacimiento }}</td>
+            <td>{{ persona.tipoSangre }}</td>
+            <td>{{ persona.ciudadNacimiento }}</td>
+            <td>{{ persona.telefono }}</td>
+            <td>{{ persona.rango}}</td>
+            <td>
+              <button type="button" name="editar" [routerLink]="['/persona/formpersona', persona.idPersona]" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='deletePersona(persona)' class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <paginator-persona *ngIf="paginador" [paginador] = "paginador"></paginator-persona>
+    </div>
+  </div>
+  

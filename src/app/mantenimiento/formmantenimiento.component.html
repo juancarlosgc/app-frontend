@@ -1,0 +1,60 @@
+<div class="card ">
+    <div class="card-header">FORMULARIO DE VEHÍCULOS</div>
+    <div class="card-body">
+       
+        <form #mantenimientoForm="ngForm">
+            <div class="form-group row">
+                <label for="codigoMantenimiento" class="col-form-label col sm-3">Código de mantenimiento:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="mantenimiento.codigoMantenimiento" name="codigoMantenimiento" placeholder="Código" required #codigoMantenimiento="ngModel">
+                    <div class="alert alert-danger" *ngIf="codigoMantenimiento.invalid && (codigoMantenimiento.touched)">
+                        <div *ngIf="codigoMantenimiento.errors.required">
+                            El código es requerido
+                        </div>
+                       
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col sm-3">Nombre de mantenimiento:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="mantenimiento.nombreMantenimiento" name="chasis" placeholder="Nombre de mantenimiento" required #nombre="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.touched)">
+                        <div *ngIf="nombre.errors">
+                            El nombre de mantenimiento es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="costo" class="col-form-label col sm-3">Costo de mantenimiento:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="mantenimiento.costoMantenimiento" name="costo" placeholder="Costo de mantenimiento" required #costo="ngModel">
+                    <div class="alert alert-danger" *ngIf="costo.invalid && (costo.touched)">
+                        <div *ngIf="costo.errors">
+                            El costo de mantenimiento es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            
+    
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='createMantenimiento()' *ngIf="!mantenimiento.idMantenimiento else elseBlock" [disabled]="!mantenimientoForm.form.valid">Crear Mantenimiento</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='updateMantenimiento()' [disabled]="!mantenimientoForm.form.valid">Actualizar Mantenimiento</button>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </form>
+
+    </div>
+    
+  
+</div>

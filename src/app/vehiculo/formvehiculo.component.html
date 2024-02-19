@@ -1,0 +1,160 @@
+<div class="card ">
+    <div class="card-header">FORMULARIO DE VEHÍCULOS</div>
+    <div class="card-body">
+       
+        <form #vehiculoForm="ngForm">
+            <div class="form-group row">
+                <label for="placa" class="col-form-label col sm-3">Placa:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.placa" name="placa" placeholder="Placa" required minlength="6" maxlength="7" #placa="ngModel">
+                    <div class="alert alert-danger" *ngIf="placa.invalid && (placa.touched)">
+                        <div *ngIf="placa.errors.required">
+                            La placa es requerida
+                        </div>
+                        <div *ngIf="placa.errors.minlength">
+                            La placa debe contener entre 6 o 7 caracteres son guión 
+                        </div>
+                        <div *ngIf="placa.errors.maxlength">
+                            La placa debe contener entre 6 o 7 caracteres son guión 
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="chasis" class="col-form-label col sm-3">Chasis:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.chasis" name="chasis" placeholder="Chasis" required #chasis="ngModel">
+                    <div class="alert alert-danger" *ngIf="chasis.invalid && (chasis.touched)">
+                        <div *ngIf="chasis.errors">
+                            El número de chasis es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="marca" class="col-form-label col sm-3">Marca:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.marca" name="marca" placeholder="Marca" required #marca="ngModel">
+                    <div class="alert alert-danger" *ngIf="marca.invalid && (marca.touched)">
+                        <div *ngIf="marca.errors">
+                            La marca es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="modelo" class="col-form-label col sm-3">Modelo:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.modelo" name="modelo" placeholder="Modelo" required #modelo="ngModel">
+                    <div class="alert alert-danger" *ngIf="modelo.invalid && (modelo.touched)">
+                        <div *ngIf="modelo.errors">
+                            El modelo es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="motor" class="col-form-label col sm-3">Motor:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.motor" name="motor" placeholder="Marca" required #motor="ngModel">
+                    <div class="alert alert-danger" *ngIf="motor.invalid && (motor.touched)">
+                        <div *ngIf="motor.errors">
+                            El tipo de motor es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+        
+            <div class="form-group row">
+                <label for="kilometraje" class="col-form-label col sm-3">Kilometraje:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.kilometraje" name="kilometraje" placeholder="Tipo de sangre" required #kilometraje="ngModel">
+                    <div class="alert alert-danger" *ngIf="kilometraje.invalid && (kilometraje.touched)">
+                        <div *ngIf="kilometraje.errors">
+                            El kilometraje es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            
+            <div class="form-group row">
+                <label for="cilindraje" class="col-form-label col sm-3">Cilindraje:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.cilindraje" name="cilindraje" placeholder="Ciudad de nacimiento" required #cilindraje="ngModel">
+                    <div class="alert alert-danger" *ngIf="cilindraje.invalid && (cilindraje.touched)">
+                        <div *ngIf="cilindraje.errors">
+                            El cilindraje es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="capacidadCarga" class="col-form-label col sm-3">Capacidad de carga:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.capacidadCarga" name="capacidadCarga" placeholder="Teléfono" required #capacidadCarga="ngModel">
+                    <div class="alert alert-danger" *ngIf="capacidadCarga.invalid && (capacidadCarga.touched)">
+                        <div *ngIf="capacidadCarga.errors">
+                            La capacidad de carga es requerida
+                        </div>
+                     </div>
+                </div>  
+            </div>
+            <br>
+
+            <div class="form-group row">
+                <label for="cantidadPasajeros" class="col-form-label col sm-3">Cantidad de pasajeros:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.cantidadPasajeros" name="cantidadPasajeros" placeholder="cantidadPasajeros" required #cantidadPasajeros="ngModel">
+                    <div class="alert alert-danger" *ngIf="cantidadPasajeros.invalid && (cantidadPasajeros.touched)">
+                        <div *ngIf="cantidadPasajeros.errors">
+                            La cantidad de pasajeros es requerida
+                        </div>
+                     </div>
+                </div>  
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="tipoVehiculo" class="col-form-label col-sm-3">Tipo de vehículo:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="vehiculo.tipoVehiculo" name="rango"  required #tipoVehiculo="ngModel">
+                        <option *ngFor="let opcion of opciones" [ngValue]="opcion">{{ opcion }}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group row">
+                <label for="observaciones" class="col-form-label col sm-3">Observaciones:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="vehiculo.observaciones" name="observaciones" placeholder="Observaciones" >    
+                </div>  
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='createVehiculo()' *ngIf="!vehiculo.idVehiculo else elseBlock" [disabled]="!vehiculoForm.form.valid">Crear Vehículo</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='updateVehiculo()' [disabled]="!vehiculoForm.form.valid">Actualizar Vehículo</button>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </form>
+
+    </div>
+    
+  
+</div>

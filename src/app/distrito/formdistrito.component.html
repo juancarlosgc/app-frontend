@@ -1,0 +1,69 @@
+<div class="card ">
+    <div class="card-header">FORMULARIO DE DISTRITOS</div>
+    <div class="card-body">
+       
+        <form #distritoForm="ngForm">
+            <div class="form-group row">
+                <label for="codigoDistrito" class="col-form-label col sm-3">Código de distrito:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="distrito.codigoDistrito" name="codigoDistrito" placeholder="Código" required #codigoDistrito="ngModel">
+                    <div class="alert alert-danger" *ngIf="codigoDistrito.invalid && (codigoDistrito.touched)">
+                        <div *ngIf="codigoDistrito.errors.required">
+                            El código es requerido
+                        </div>
+                       
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="nombreDistrito" class="col-form-label col sm-3">Nombre de distrito:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="distrito.nombreDistrito" name="nombreDistrito" placeholder="Nombre de distrito" required #nombreDistrito="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombreDistrito.invalid && (nombreDistrito.touched)">
+                        <div *ngIf="nombreDistrito.errors">
+                            El nombre de distrito es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="parroquia" class="col-form-label col sm-3">Parroquia:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="distrito.parroquia" name="parroquia" placeholder="Parroquia" required #parroquia="ngModel">
+                    <div class="alert alert-danger" *ngIf="parroquia.invalid && (parroquia.touched)">
+                        <div *ngIf="parroquia.errors">
+                            La parroquia es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="provincia" class="col-form-label col-sm-3">Provincia:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="distrito.provincia" name="provincia"  required #provincia="ngModel">
+                        <option *ngFor="let opcion of opciones" [ngValue]="opcion">{{ opcion }}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            
+    
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='createDistrito()' *ngIf="!distrito.idDistrito else elseBlock" [disabled]="!distritoForm.form.valid">Crear Distrito</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='updateDistrito()' [disabled]="!distritoForm.form.valid">Actualizar Distrito</button>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </form>
+
+    </div>
+    
+  
+</div>

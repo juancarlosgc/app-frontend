@@ -1,0 +1,124 @@
+<div class="card ">
+    <div class="card-header">FORMULARIO DE PERSONAL POLICIAL</div>
+    <div class="card-body">
+       
+        <form #personaForm="ngForm">
+            <div class="form-group row">
+                <label for="cedula" class="col-form-label col sm-3">Cédula:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.cedula" name="cedula" placeholder="Cédula" required minlength="10" maxlength="10" #cedula="ngModel">
+                    <div class="alert alert-danger" *ngIf="cedula.invalid && (cedula.touched)">
+                        <div *ngIf="cedula.errors.required">
+                            La cédula es requerida
+                        </div>
+                        <div *ngIf="cedula.errors.minlength">
+                            La cédula debe contener 10 digitos
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="apellidos" class="col-form-label col sm-3">Apellidos:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.apellidos" name="apellidos" placeholder="Apellidos" required #apellidos="ngModel">
+                    <div class="alert alert-danger" *ngIf="apellidos.invalid && (apellidos.touched)">
+                        <div *ngIf="apellidos.errors">
+                            Los apellidos son requeridos
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="nombres" class="col-form-label col sm-3">Nombres:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.nombres" name="nombres" placeholder="Nombres" required #nombres="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombres.invalid && (nombres.touched)">
+                        <div *ngIf="nombres.errors">
+                            Los nombres son requeridos
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="fechaNacimiento" class="col-form-label col sm-3">Fecha:</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento" required #fechaNacimiento="ngModel">
+                    <div class="alert alert-danger" *ngIf="fechaNacimiento.invalid && (fechaNacimiento.touched)">
+                        <div *ngIf="fechaNacimiento.errors">
+                            La fecha de nacimiento es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="tipoSangre" class="col-form-label col sm-3">Tipo de sangre:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.tipoSangre" name="tipoSangre" placeholder="Tipo de sangre" required #tipoSangre="ngModel">
+                    <div class="alert alert-danger" *ngIf="tipoSangre.invalid && (tipoSangre.touched)">
+                        <div *ngIf="tipoSangre.errors">
+                            El tipo de sangre es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            
+            <div class="form-group row">
+                <label for="ciudadNacimiento" class="col-form-label col sm-3">Ciudad de nacimiento:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.ciudadNacimiento" name="ciudadNacimiento" placeholder="Ciudad de nacimiento" required #ciudadNacimiento="ngModel">
+                    <div class="alert alert-danger" *ngIf="ciudadNacimiento.invalid && (ciudadNacimiento.touched)">
+                        <div *ngIf="ciudadNacimiento.errors">
+                            La ciudad de nacimiento es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="telefono" class="col-form-label col sm-3">Telefono:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="persona.telefono" name="telefono" placeholder="Teléfono" required #telefono="ngModel">
+                    <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.touched)">
+                        <div *ngIf="telefono.errors">
+                            El teléfono es requerido
+                        </div>
+                     </div>
+                </div>  
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <label for="rango" class="col-form-label col-sm-3">Rango:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="persona.rango" name="rango"  required #rango="ngModel">
+                        <option *ngFor="let opcion of opciones" [ngValue]="opcion">{{ opcion }}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='createPersona()' *ngIf="!persona.idPersona else elseBlock" [disabled]="!personaForm.form.valid">Crear Persona</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='updatePersona()' [disabled]="!personaForm.form.valid">Actualizar Persona</button>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </form>
+
+    </div>
+    
+  
+</div>
