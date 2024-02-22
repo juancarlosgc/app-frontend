@@ -4,6 +4,8 @@ import { Persona } from '../model/persona';
 import { Observable, catchError, map, throwError, tap } from 'rxjs';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Subcircuito } from '../model/subcircuito';
+import { Vehiculo } from '../model/vehiculo';
 
 
 @Injectable({
@@ -76,6 +78,14 @@ export class PersonaService {
         return throwError(e);
       })
     );
+  }
+
+  public listSubcircuitos(): Observable<Subcircuito[]> {
+    return this.http.get<Subcircuito[]>(this.URL + '/subcircuitos');
+  }
+
+  public listVehiculos(): Observable<Vehiculo[]> {
+    return this.http.get<Vehiculo[]>(this.URL + '/vehiculos');
   }
 
 

@@ -10,9 +10,7 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
 
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" >Personas</a>
-          </li>
+     
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Gestión Administrativa
@@ -41,27 +39,45 @@
                     <a class="dropdown-item" routerLink="/distrito">Distritos</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" routerLink="/listadocircuitos">Circuitos</a>
+                    <a class="dropdown-item" routerLink="/circuito">Circuitos</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" routerLink="/listadosubcircuitos">Subircuitos</a>
+                    <a class="dropdown-item" routerLink="/subcircuito">Subircuitos</a>
                   </li>
                 </ul>
               </li>
 
               
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Mantenimiento Vehicular &raquo; </a>
+                <ul class="dropdown-menu dropdown-submenu">
+                  <li>
+                    <a class="dropdown-item" routerLink="/registro">Registrar Solicitudes</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" routerLink="/circuito">Ordenes de Trabajo</a>
+                  </li>
+                  
+                </ul>
+              </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Solicitud de mantenimiento
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/solicitud">Crear Solicitud</a></li>        
+            </ul>
           </li>
+
+
+         
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        
       </div>
     </div>
   </nav>

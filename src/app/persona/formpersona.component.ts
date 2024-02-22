@@ -3,6 +3,8 @@ import { Persona } from '../model/persona';
 import { PersonaService } from '../services/persona.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
+import { Subcircuito } from '../model/subcircuito';
+import { Vehiculo } from '../model/vehiculo';
 
 
 
@@ -16,12 +18,17 @@ export class FormpersonaComponent implements OnInit{
   private titulo: string = 'Formulario de Persona';
   private errores: string[];
 
+  subcircuitos: Subcircuito[] = [];
+  vehiculos: Vehiculo[] = [];
+
   constructor(private personaService: PersonaService,
               private router: Router,
               private activatedRoute: ActivatedRoute){ }
 
   ngOnInit(): void {
     this.cargarPersona();
+    this.personaService.listSubcircuitos().subscribe(subcircuitos => this.subcircuitos = subcircuitos);
+    this.personaService.listVehiculos().subscribe(vehiculos => this.vehiculos = vehiculos);
   }
 
   public createPersona(): void {

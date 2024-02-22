@@ -1,0 +1,53 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">LISTADO DE SOLICITUDES DE MANTENIMIENTO</div>
+    <div class="card-body text-primary">
+      
+
+        <div *ngIf="solicitudes?.length==0">
+        <div class="alert alert-info" role="alert">
+          No hay solicitudes registradas
+        </div>
+      </div>
+  
+      <table class="table table-bordered table-striped" *ngIf="solicitudes?.length>0">
+        <thead>
+          <tr>
+            <th>Nro. Solicitud</th>
+            <th>Fecha Solicitada</th>
+            <th>Hora Solicitada</th>
+            <th>Kilometraje</th>
+            <th>Tipo de Vehículo</th>
+            <th>Datos del solicitante</th>
+            <th>Datos del vehículo</th>
+            <th>
+              Registrar
+            </th>
+            <th>
+              Rechazar
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let solicitud of solicitudes">
+            <td>{{ solicitud.idSolicitud }}</td>
+            <td>{{ solicitud.fechaSolicitud }}</td>
+            <td>{{ solicitud.horaSolicitud }}</td>
+            <td>{{ solicitud.kilometraje }}</td>
+            <td>{{ solicitud.vehiculo.tipoVehiculo }}</td>
+            <td>{{ solicitud.persona.apellidos }} {{ solicitud.persona.nombres }}</td>
+            <td>{{ solicitud.vehiculo.marca }} {{ solicitud.vehiculo.modelo }} {{solicitud.vehiculo.placa }}</td>
+            <td>
+              <button type="button" name="editar" [routerLink]="['/registro/formregistromantenimiento', solicitud.idSolicitud]" class="btn btn-primary">Registrar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='deleteMantenimiento(mantenimiento)' class="btn btn-danger">Eliminar</button>
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+      <paginator-mantenimiento *ngIf="paginador" [paginador] = "paginador"></paginator-mantenimiento>
+    </div>
+  </div>
+  
+

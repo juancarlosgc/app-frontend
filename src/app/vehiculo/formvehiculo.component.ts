@@ -3,6 +3,7 @@ import { Vehiculo } from '../model/vehiculo';
 import { VehiculoService } from '../services/vehiculo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { Subcircuito } from '../model/subcircuito';
 
 @Component({
   selector: 'app-formvehiculo',
@@ -14,6 +15,7 @@ export class FormvehiculoComponent implements OnInit{
   public vehiculo: Vehiculo = new Vehiculo();
   private titulo: string = 'Formulario de vehiculos';
   private errores: string[];
+  subcircuitos: Subcircuito[] = [];
 
   constructor(private vehiculoService: VehiculoService,
               private router: Router,
@@ -21,6 +23,7 @@ export class FormvehiculoComponent implements OnInit{
 
   ngOnInit(): void {
     this.cargarVehiculo();
+    this.vehiculoService.listSubcircuitos().subscribe(subcircuitos => this.subcircuitos = subcircuitos);
   }
 
   public createVehiculo(): void {

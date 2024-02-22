@@ -1,3 +1,6 @@
+import { Subcircuito } from "./subcircuito";
+import { Vehiculo } from "./vehiculo";
+
 export class Persona {
     idPersona: number;
     cedula: string;
@@ -8,4 +11,6 @@ export class Persona {
     ciudadNacimiento: string;
     telefono: string;
     rango: string;
+    subcircuito: Subcircuito;
+    vehiculo: Vehiculo;
 }

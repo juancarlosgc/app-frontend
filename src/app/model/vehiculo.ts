@@ -1,3 +1,5 @@
+import { Subcircuito } from "./subcircuito";
+
 export class Vehiculo {
     idVehiculo: number;
     placa: string;
@@ -11,4 +13,5 @@ export class Vehiculo {
     cantidadPasajeros: number;
     tipoVehiculo: string;
     observaciones: string;
+    subcircuito: Subcircuito;
 }

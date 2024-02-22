@@ -43,9 +43,9 @@ export class FormitemComponent implements OnInit{
 
   cargarItem(): void {
     this.activatedRoute.params.subscribe(params => {
-      let idVehiculo = params['idItem'];
-      if (idVehiculo) {
-        this.itemService.getItem(idVehiculo).subscribe((item) => this.item = item)
+      let idItem = params['idItem'];
+      if (idItem) {
+        this.itemService.getItem(idItem).subscribe((item) => this.item = item)
       }
     })
   }

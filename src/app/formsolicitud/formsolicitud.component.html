@@ -1,0 +1,86 @@
+<div class="card ">
+    <div class="card-header">SOLICITUD DE MANTENIMIENTO</div>
+    <div class="card-body">
+       
+        <form #solicitudForm="ngForm">
+            <div class="form-group row">
+                <label for="fechaSolicitud" class="col-form-label col sm-3">Fecha solicitada:</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" [(ngModel)]="solicitud.fechaSolicitud" name="fechaSolicitud" placeholder="Fecha" required  #fechaSolicitud="ngModel">
+                    <div class="alert alert-danger" *ngIf="fechaSolicitud.invalid && (fechaSolicitud.touched)">
+                        <div *ngIf="placa.errors.required">
+                            La fecha es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="horaSolicitud" class="col-form-label col sm-3">Hora solicitada:</label>
+                <div class="col-sm-8">
+                    <input type="time" class="form-control" [(ngModel)]="solicitud.horaSolicitud" name="nombre" placeholder="Hora" required #horaSolicitud="ngModel">
+                    <div class="alert alert-danger" *ngIf="horaSolicitud.invalid && (horaSolicitud.touched)">
+                        <div *ngIf="chasis.errors">
+                            La hora es requerida
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="kilometraje" class="col-form-label col sm-3">Kilometraje:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="solicitud.kilometraje" name="kilometraje" placeholder="Kilometraje" required #kilometraje="ngModel">
+                    <div class="alert alert-danger" *ngIf="kilometraje.invalid && (kilometraje.touched)">
+                        <div *ngIf="marca.errors">
+                            El kilometraje es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="detalle" class="col-form-label col sm-3">Detalle:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="solicitud.detalle" name="detalle" placeholder="Detalle" required #detalle="ngModel">
+                    <div class="alert alert-danger" *ngIf="detalle.invalid && (detalle.touched)">
+                        <div *ngIf="marca.errors">
+                            El detalle es requerido
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="persona" class="col-form-label col-sm-3">Solicitante</label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="solicitud.persona" name="persona" required>
+                       <option *ngFor="let opcion of personas" [ngValue]="opcion">{{opcion.apellidos}} {{opcion.nombres}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="vehiculo" class="col-form-label col-sm-3">Vehículo</label>
+                <div class="col-sm-8">
+                    <select class="form-control" [(ngModel)]="solicitud.vehiculo" name="vehiculo" required>
+                       <option *ngFor="let opcion of vehiculos" [ngValue]="opcion">{{opcion.placa}} {{opcion.marca}}</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='createSolicitud()' *ngIf="!solicitud.idSolicitud else elseBlock" [disabled]="!solicitudForm.form.valid">Crear Solicitud</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='updateItem()' [disabled]="!solicitudForm.form.valid">Actualizar Ítem</button>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </form>
+
+    </div>
+    
+  
+</div>

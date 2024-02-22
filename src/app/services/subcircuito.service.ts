@@ -2,23 +2,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { Circuito } from '../model/circuito';
+import { Subcircuito } from '../model/subcircuito';
 import swal from 'sweetalert2';
-import { Distrito } from '../model/distrito';
+import { Circuito } from '../model/circuito';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CircuitoService {
-  public URL: string = 'http://localhost:8080/circuitos';
+export class SubcircuitoService {
+  public URL: string = 'http://localhost:8080/subcircuitos';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private router:Router) { }
 
-  getCircuitos(page: number): Observable<any>{  
+  getSubcircuitos(page: number): Observable<any>{  
     return this.http.get(this.URL + '/vertodo' + '/page/' + page).pipe(
       map((response: any) => {
-        (response.content as Circuito[]).map(item => {
+        (response.content as Subcircuito[]).map(item => {
           console.log(this.URL);
           return item;
         });
@@ -27,8 +27,8 @@ export class CircuitoService {
     );
   }
 
-  createCircuito(circuito: Circuito): Observable<any>{
-    return this.http.post<any>(this.URL + '/crear', circuito, { headers: this.httpHeaders }).pipe(
+  createSubcircuito(subcircuito: Subcircuito): Observable<any>{
+    return this.http.post<any>(this.URL + '/crear', subcircuito, { headers: this.httpHeaders }).pipe(
       catchError(e => {
         if (e.status == 400) {
           return throwError(e);
@@ -40,11 +40,10 @@ export class CircuitoService {
     );
   }
 
-  
-  getCircuito(idCircuito: number): Observable <Circuito>{
-    return this.http.get<Circuito>(this.URL + '/ver/' + idCircuito).pipe(
+  getSubcircuito(idSubcircuito: number): Observable <Subcircuito>{
+    return this.http.get<Subcircuito>(this.URL + '/ver/' + idSubcircuito).pipe(
       catchError(e => {
-        this.router.navigate(['/circuito']);
+        this.router.navigate(['/subcircuito']);
         console.error(e.error.mensaje);
         swal('Error al obtener datos', e.error.mensaje, 'error');
         return throwError(e);
@@ -53,8 +52,8 @@ export class CircuitoService {
     );
   }
 
-  updateCircuito(circuito: Circuito): Observable<any> {
-    return this.http.put<any>(`${this.URL}/editar/ ${circuito.idCircuito}`,circuito, { headers: this.httpHeaders }).pipe(
+  updateSubcircuito(subcircuito: Subcircuito): Observable<any> {
+    return this.http.put<any>(`${this.URL}/editar/ ${subcircuito.idSubcircuito}`,subcircuito, { headers: this.httpHeaders }).pipe(
       catchError(e => {
 
         if (e.status == 400) {
@@ -68,18 +67,20 @@ export class CircuitoService {
     );
   }
 
-  deleteCircuito(id: number): Observable<Circuito> {
-    return this.http.delete<Circuito>(`${this.URL}/eliminar/${id}`, { headers: this.httpHeaders }).pipe(
+
+  deleteSubcircuito(id: number): Observable<Subcircuito> {
+    return this.http.delete<Subcircuito>(`${this.URL}/eliminar/${id}`, { headers: this.httpHeaders }).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
-        swal('Error al  eliminar', e.error.mensaje, 'error');
+        swal('Error al eliminar', e.error.mensaje, 'error');
         return throwError(e);
       })
     );
   }
 
-  public listDistritos(): Observable<Distrito[]> {
-    return this.http.get<Distrito[]>(this.URL + '/distritos');
+  public listCircuitos(): Observable<Circuito[]> {
+    return this.http.get<Circuito[]>(this.URL + '/circuitos');
   }
+
 
 }

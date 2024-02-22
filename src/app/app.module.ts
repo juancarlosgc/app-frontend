@@ -25,6 +25,12 @@ import { DistritoComponent } from './distrito/distrito.component';
 import { FormdistritoComponent } from './distrito/formdistrito.component';
 import { CircuitoComponent } from './circuito/circuito.component';
 import { CircuitoformComponent } from './circuito/circuitoform.component';
+import { SubcircuitoComponent } from './subcircuito/subcircuito.component';
+import { FormsubcircuitoComponent } from './subcircuito/formsubcircuito.component';
+import { FormsolicitudComponent } from './formsolicitud/formsolicitud.component';
+import { RegistromantenimientoComponent } from './registromantenimiento/registromantenimiento.component';
+import { FormregistromantenimientoComponent } from './registromantenimiento/formregistromantenimiento.component';
+
 
 
 const routes: Routes = [
@@ -52,7 +58,25 @@ const routes: Routes = [
   {path: 'distrito', component: DistritoComponent},
   {path: 'distrito/page/:page', component: DistritoComponent},
   {path: 'distrito/formdistrito', component: FormdistritoComponent},
-  {path: 'distrito/formdistrito/:idDistrito', component: FormdistritoComponent}
+  {path: 'distrito/formdistrito/:idDistrito', component: FormdistritoComponent},
+
+  {path: 'circuito', component: CircuitoComponent},
+  {path: 'circuito/page/:page', component: CircuitoComponent},
+  {path: 'circuito/formcircuito', component: CircuitoformComponent},
+  {path: 'circuito/formcircuito/:idCircuito', component: CircuitoformComponent},
+
+  {path: 'subcircuito', component: SubcircuitoComponent},
+  {path: 'subcircuito/page/:page', component: SubcircuitoComponent},
+  {path: 'subcircuito/formsubcircuito', component: FormsubcircuitoComponent},
+  {path: 'subcircuito/formsubcircuito/:idSubcircuito', component: FormsubcircuitoComponent},
+
+  {path: 'solicitud', component: FormsolicitudComponent},
+
+  {path: 'registro', component: RegistromantenimientoComponent},
+  {path: 'registro/page/:page', component: SubcircuitoComponent},
+  {path: 'registro/formregistromantenimiento', component: FormregistromantenimientoComponent},
+  {path: 'registro/formregistromantenimiento/:idSolicitud', component: FormregistromantenimientoComponent},
+  
 ];
 
 @NgModule({
@@ -74,7 +98,12 @@ const routes: Routes = [
     DistritoComponent,
     FormdistritoComponent,
     CircuitoComponent,
-    CircuitoformComponent
+    CircuitoformComponent,
+    SubcircuitoComponent,
+    FormsubcircuitoComponent,
+    FormsolicitudComponent,
+    RegistromantenimientoComponent,
+    FormregistromantenimientoComponent
 
 
   ],

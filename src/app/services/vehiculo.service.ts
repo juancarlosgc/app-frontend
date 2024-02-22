@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Vehiculo } from '../model/vehiculo';
 import swal from 'sweetalert2';
+import { Subcircuito } from '../model/subcircuito';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,11 @@ export class VehiculoService {
       })
     );
   }
+
+  public listSubcircuitos(): Observable<Subcircuito[]> {
+    return this.http.get<Subcircuito[]>(this.URL + '/subcircuitos');
+  }
+
 
 
 
